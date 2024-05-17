@@ -13,12 +13,10 @@ service:
 ingress:
   enabled: true
   annotations: {}
-  hosts:
-    - host: ""
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
   tls: []
+service:
+  port: 3000
+
 
 resources: {}
 
