@@ -13,7 +13,7 @@ ingress:
   enabled: true
   annotations: {}
   hosts:
-    - host: 122.161.76.203
+    - host: ""
       paths:
         - path: /
           pathType: ImplementationSpecific
