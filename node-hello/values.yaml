@@ -1,0 +1,28 @@
+replicaCount: 1
+
+image:
+  repository: pranshu98/node-hello
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: true
+  annotations: {}
+  hosts:
+    - host: 122.161.76.203
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: {}
+
+affinity: {}
