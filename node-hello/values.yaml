@@ -8,6 +8,7 @@ image:
 service:
   type: NodePort
   port: 3000
+  nodePort: 300000
 
 ingress:
   enabled: true
