@@ -4,14 +4,13 @@ metadata:
   name: node-hello
   namespace: argocd
 spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: 'https://github.com/pranshu98/Bansira.git'
-    targetRevision: HEAD
     path: node-hello
-  destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: default
+    repoURL: https://github.com/pranshu98/Bansira.git
   syncPolicy:
     automated:
       prune: true
