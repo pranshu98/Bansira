@@ -11,23 +11,28 @@ metadata:
   {{- end }}
 spec:
   rules:
-    - http:
+    {{- range .Values.ingress.hosts }}
+    - host: {{ .host }}
+      http:
         paths:
-          - path: /
-            pathType: Prefix
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
             backend:
               service:
-                name: {{ include "node-hello.fullname" . }}
+                name: {{ include "node-hello.fullname" $ }}
                 port:
-                  number: {{ .Values.service.port }}
+                  number: {{ $.Values.service.port }}
+          {{- end }}
+    {{- end }}
   {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.tls }}
-    - secretName: {{ .secretName }}
-      hosts:
+    - hosts:
         {{- range .hosts }}
         - {{ . }}
         {{- end }}
+      secretName: {{ .secretName }}
     {{- end }}
   {{- end }}
 {{- end }}
